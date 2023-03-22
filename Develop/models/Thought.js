@@ -1,5 +1,3 @@
-//new
-
 const { Schema, Types } = require('mongoose');
 const reactionSchema = require('./reaction');
 
