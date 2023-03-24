@@ -1,7 +1,9 @@
 const connection = require('../config/connection');
 const { Thought, User } = require('../models');
 
-connection.on('error', (err) => err);
+connection.on('error', (err) => {
+  console.error('Database connection error:', err);
+});
 
 connection.once('open', async () => {
   console.log('connected');
@@ -20,32 +22,32 @@ connection.once('open', async () => {
   },
   {
     "username": "carl",
-    "email": "bob@bob.com"
+    "email": "carl@carl.com"
   },
   {
     "username": "jimbo",
-    "email": "bob@bob.com"
+    "email": "jimbo@jimbo.com"
   },
   {
     "username": "katy",
-    "email": "bob@bob.com"
+    "email": "katy@katy.com"
   },
 ];
   const thoughts = [
       {
-        "thoughtText": "bob is kinda weird",
+        "thoughtText": "Jimbo is kinda weird",
         "username": "bob",
       },     
        {
-        "thoughtText": "bob is kinda weird",
+        "thoughtText": "Carl is kinda weird",
         "username": "jimbo",
       },     
        {
-        "thoughtText": "bob is kinda weird",
+        "thoughtText": "Katy is kinda weird",
         "username": "carl",
       },    
         {
-        "thoughtText": "bob is kinda weird",
+        "thoughtText": "Bob is kinda weird",
         "username": "katy",
       }
   ];
