@@ -1,6 +1,5 @@
 // ObjectId() method for converting userId string into an ObjectId
-const { ObjectId } = require('mongoose').Types;
-const { User } = require('../models');
+const { User, Thought } = require('../models');
 
 module.exports = {
   // Get all users
@@ -41,7 +40,7 @@ module.exports = {
       .then((user) =>
         !user
           ? res.status(404).json({ message: 'User does not exist' })
-          : Course.findOneAndUpdate(
+          : Thought.findOneAndUpdate(
               { users: req.params.userId },
               { $pull: { users: req.params.userId } },
               { new: true }
@@ -82,7 +81,7 @@ module.exports = {
   deleteFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
-      { $pull: { friend: { friendId: req.params.friendId } } },
+      { $pull: { friends:req.params.friendId } },
       { runValidators: true, new: true }
     )
       .then((user) =>
